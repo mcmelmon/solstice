@@ -5,12 +5,12 @@ using UnityEngine;
 public class Orbit : MonoBehaviour
 {
     public Transform center;
-    public GameObject body;
-    public float incline = 0f;
+    public Transform body;
+    public Vector3 inclineVector = Vector3.zero;
     public float degreesPerSecond = 1f;
 
     private void Start() {
-        transform.Rotate(new Vector3(incline, 0, 0));
+        transform.Rotate(inclineVector);
     }
 
     void Update()
