@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Cinemachine;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,8 @@ public class Player : MonoBehaviour
 
     public float speed = 3f;
     public float turnSpeed = 75f;
+
+    public CinemachineFreeLook viewport;
 
     Vector2 movement;
 
@@ -48,11 +51,17 @@ public class Player : MonoBehaviour
 
 
     public void Move() {
-
+        // We're just using FixedUpdate for movement...
     }
 
 
-    public void Interact() {
-
+    public void Look() {
+        if (Input.GetMouseButtonDown(0)) {
+            viewport.Priority = 20;
+        }
+        
+        if (Input.GetMouseButtonUp(0)) {
+            viewport.Priority = 1;
+        }
     }
 }

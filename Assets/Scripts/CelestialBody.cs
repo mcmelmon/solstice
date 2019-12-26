@@ -8,6 +8,7 @@ public class CelestialBody : MonoBehaviour
     public float degreesPerSecond = 1f;
     public float gravity = -10f;
 
+
     void Start()
     {
         transform.Rotate(incline);
