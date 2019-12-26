@@ -17,4 +17,9 @@ public class Orbit : MonoBehaviour
     {
         transform.Rotate (0, degreesPerSecond * Time.deltaTime, 0);
     }
+
+    private void OnDrawGizmos() {
+        // float radius = Vector3.Distance(center.position, transform.position);
+        //  Debug.DrawRay(body.transform.position, (center.position - body.transform.position) * radius, Color.green);
+    }
 }
