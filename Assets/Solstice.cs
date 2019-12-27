@@ -16,12 +16,12 @@ public class @Solstice : IInputActionCollection, IDisposable
     ""maps"": [
         {
             ""name"": ""Player"",
-            ""id"": ""4d003f98-d017-42f6-ae9d-8ce528c1eb77"",
+            ""id"": ""f2adcbb7-844d-4098-8233-eef43650f9d7"",
             ""actions"": [
                 {
                     ""name"": ""Move"",
                     ""type"": ""Value"",
-                    ""id"": ""0dcc6df5-4840-4ce9-baa3-654832b0d714"",
+                    ""id"": ""87515f94-8552-4493-a1bc-55acaab5f256"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -29,15 +29,15 @@ public class @Solstice : IInputActionCollection, IDisposable
                 {
                     ""name"": ""Look"",
                     ""type"": ""Value"",
-                    ""id"": ""f85de7ee-44c6-44f1-8830-6b7051656dec"",
+                    ""id"": ""e7e9f13e-fc7e-486f-a7ca-f227fb5e2902"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Interact"",
+                    ""name"": ""Fire"",
                     ""type"": ""Button"",
-                    ""id"": ""f0bccfe2-ad40-48f5-b29e-eb8db5d2de5f"",
+                    ""id"": ""c92ea549-96c1-4b9c-8950-478cb9044930"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -216,7 +216,7 @@ public class @Solstice : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
-                    ""action"": ""Interact"",
+                    ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -227,7 +227,7 @@ public class @Solstice : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Touch"",
-                    ""action"": ""Interact"",
+                    ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -238,7 +238,7 @@ public class @Solstice : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Joystick"",
-                    ""action"": ""Interact"",
+                    ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -249,7 +249,7 @@ public class @Solstice : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""XR"",
-                    ""action"": ""Interact"",
+                    ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -268,12 +268,12 @@ public class @Solstice : IInputActionCollection, IDisposable
         },
         {
             ""name"": ""UI"",
-            ""id"": ""ab437b66-f0d1-46cf-9a55-4779e84cf4d2"",
+            ""id"": ""2afa3504-a06f-427f-b5b5-588e54af0b6c"",
             ""actions"": [
                 {
                     ""name"": ""Navigate"",
                     ""type"": ""Value"",
-                    ""id"": ""c1417839-429a-435f-a059-b22c937b5273"",
+                    ""id"": ""499f1270-10eb-4b43-9f2a-259931d72242"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -281,7 +281,7 @@ public class @Solstice : IInputActionCollection, IDisposable
                 {
                     ""name"": ""Submit"",
                     ""type"": ""Button"",
-                    ""id"": ""59629ed1-5ccf-40c4-8004-f46471cd8875"",
+                    ""id"": ""7c64663d-375a-4fb0-9807-9438e6f4d7f9"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -289,7 +289,7 @@ public class @Solstice : IInputActionCollection, IDisposable
                 {
                     ""name"": ""Cancel"",
                     ""type"": ""Button"",
-                    ""id"": ""ef8de18a-079f-4456-b30d-b340ed6a95a1"",
+                    ""id"": ""0dbcdff1-3f27-4b36-81a9-fc1ce790bccf"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -297,7 +297,7 @@ public class @Solstice : IInputActionCollection, IDisposable
                 {
                     ""name"": ""Point"",
                     ""type"": ""PassThrough"",
-                    ""id"": ""4c099b09-f1f3-427c-bd3b-9323606151ea"",
+                    ""id"": ""cb147fca-2689-42cb-9cd0-81694fcf0df6"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -305,7 +305,7 @@ public class @Solstice : IInputActionCollection, IDisposable
                 {
                     ""name"": ""Click"",
                     ""type"": ""PassThrough"",
-                    ""id"": ""5e0b4ec4-2feb-4e23-bcd5-a8923ff68377"",
+                    ""id"": ""5f4e76b3-7de1-4e9a-a9eb-e707611544b5"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -313,7 +313,7 @@ public class @Solstice : IInputActionCollection, IDisposable
                 {
                     ""name"": ""ScrollWheel"",
                     ""type"": ""PassThrough"",
-                    ""id"": ""a8c6655c-ad1c-446a-8595-5026363cb371"",
+                    ""id"": ""60541b31-8e46-4280-9dfe-4cba98e84791"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -321,7 +321,7 @@ public class @Solstice : IInputActionCollection, IDisposable
                 {
                     ""name"": ""MiddleClick"",
                     ""type"": ""PassThrough"",
-                    ""id"": ""36e7a085-e115-4847-b45a-b314c4960371"",
+                    ""id"": ""939269ae-9a8b-421f-bffd-dfd6fbbfbc16"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
@@ -329,7 +329,7 @@ public class @Solstice : IInputActionCollection, IDisposable
                 {
                     ""name"": ""RightClick"",
                     ""type"": ""PassThrough"",
-                    ""id"": ""6f267661-a99f-4a53-aec6-cad823399c15"",
+                    ""id"": ""16b16b01-ab6d-4367-af38-8b9c14b5a597"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
@@ -337,7 +337,7 @@ public class @Solstice : IInputActionCollection, IDisposable
                 {
                     ""name"": ""TrackedDevicePosition"",
                     ""type"": ""PassThrough"",
-                    ""id"": ""babce1a1-7d44-4d68-aadc-c2e76751a9c1"",
+                    ""id"": ""9bec2be1-cc71-494e-9a85-2391207c3196"",
                     ""expectedControlType"": ""Vector3"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -345,7 +345,7 @@ public class @Solstice : IInputActionCollection, IDisposable
                 {
                     ""name"": ""TrackedDeviceOrientation"",
                     ""type"": ""PassThrough"",
-                    ""id"": ""50d3ee16-9af5-448d-8c9b-7c4f37c2ed2e"",
+                    ""id"": ""e96e56e4-4a57-4c69-a244-631be86f6919"",
                     ""expectedControlType"": ""Quaternion"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -353,7 +353,7 @@ public class @Solstice : IInputActionCollection, IDisposable
                 {
                     ""name"": ""TrackedDeviceSelect"",
                     ""type"": ""PassThrough"",
-                    ""id"": ""825f89bd-297f-40c4-a779-14e8209ccadb"",
+                    ""id"": ""e1f82cd8-a61d-4676-ac7a-16fdbdb28fd1"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -837,7 +837,7 @@ public class @Solstice : IInputActionCollection, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
-        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -902,14 +902,14 @@ public class @Solstice : IInputActionCollection, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Look;
-    private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_Fire;
     public struct PlayerActions
     {
         private @Solstice m_Wrapper;
         public PlayerActions(@Solstice wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Look => m_Wrapper.m_Player_Look;
-        public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -925,9 +925,9 @@ public class @Solstice : IInputActionCollection, IDisposable
                 @Look.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                 @Look.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                 @Look.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
-                @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
-                @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
-                @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Fire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
+                @Fire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
+                @Fire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -938,9 +938,9 @@ public class @Solstice : IInputActionCollection, IDisposable
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
-                @Interact.started += instance.OnInteract;
-                @Interact.performed += instance.OnInteract;
-                @Interact.canceled += instance.OnInteract;
+                @Fire.started += instance.OnFire;
+                @Fire.performed += instance.OnFire;
+                @Fire.canceled += instance.OnFire;
             }
         }
     }
@@ -1107,7 +1107,7 @@ public class @Solstice : IInputActionCollection, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
-        void OnInteract(InputAction.CallbackContext context);
+        void OnFire(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

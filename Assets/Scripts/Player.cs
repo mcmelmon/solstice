@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
+    public GameObject[] forms;
     public float speed = 3f;
     public float turnSpeed = 75f;
 
@@ -34,7 +34,23 @@ public class Player : MonoBehaviour
     }
 
     private void Update() {
+        if (IsGrounded()) {
+            foreach (MeshRenderer renderer in forms[0].GetComponentsInChildren<MeshRenderer>()) {
+                renderer.enabled = true;
+            }
+            forms[1].GetComponent<MeshRenderer>().enabled = false;
 
+            forms[0].GetComponent<Rigidbody>().drag = 0.1f;
+            forms[1].GetComponent<MeshCollider>().enabled = false;
+        } else {
+            foreach (MeshRenderer renderer in forms[0].GetComponentsInChildren<MeshRenderer>()) {
+                renderer.enabled = false;
+            }
+            forms[1].GetComponent<MeshRenderer>().enabled = true;
+
+            forms[0].GetComponent<Rigidbody>().drag = 2f;
+            forms[1].GetComponent<MeshCollider>().enabled = true;
+        }
     }
 
     private void FixedUpdate() {
@@ -63,5 +79,18 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonUp(0)) {
             viewport.Priority = 1;
         }
+    }
+
+
+    // private
+
+
+    bool IsGrounded() {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity)) {
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * hit.distance, Color.yellow);
+            if (hit.distance > 5) return false;
+        }
+        return true;
     }
 }
