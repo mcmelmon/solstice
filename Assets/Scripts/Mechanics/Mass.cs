@@ -7,7 +7,16 @@ public class Mass : MonoBehaviour
 {
     public CelestialBody planet;
 
+    private void Start() {
+        if (planet != null) { 
+            GetComponent<Rigidbody>().useGravity = false;
+            GetComponent<Rigidbody>().freezeRotation = true;
+        }
+    }
+
     private void FixedUpdate() {
-        planet.Attract(transform);
+        if (planet != null) {
+            planet.Attract(transform);
+        }
     }
 }
