@@ -19,7 +19,7 @@ public class Orbit : MonoBehaviour
     }
 
     private void OnDrawGizmos() {
-        // float radius = Vector3.Distance(center.position, transform.position);
-        //  Debug.DrawRay(body.transform.position, (center.position - body.transform.position) * radius, Color.green);
+        float radius = Vector3.Distance(center.position, transform.position);
+        Debug.DrawRay(body.transform.position, (center.position - body.transform.position) * radius, Color.green);
     }
 }
