@@ -14,7 +14,7 @@ public class SacredAlcove : MonoBehaviour
 
     void Update()
     {
-        if (sacredOrb != null && mechanism != null && mechanism.Triggered) {
+        if (sacredOrb != null && mechanism != null && mechanism.Engaged) {
             sacredOrb.GetComponent<Rigidbody>().useGravity = true;
             sacredOrb = null;
             StopCoroutine(SwingSpotlight());
