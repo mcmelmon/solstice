@@ -36,6 +36,8 @@ public class SacredAlcove : MonoBehaviour
             float adjustment = Mathf.Sin(radians) * 90f;
 
             spotlight.transform.eulerAngles = new Vector3(originalRotation.x, originalRotation.y + adjustment, originalRotation.z);
+            // This produces a different-but-also-interesting rotation...
+            // spotlight.transform.Rotate(0, adjustment, 0, Space.World);
             
             yield return new WaitForSeconds(.05f);
         }

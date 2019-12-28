@@ -65,11 +65,9 @@ public class Player : MonoBehaviour
 
     // public
 
-
-    public void Move() {
-        // We're just using FixedUpdate for movement...
+    public void Jump() {
+        GetComponent<Rigidbody>().AddForce(new Vector3(0, speed * 10, 0), ForceMode.Impulse);
     }
-
 
     public void Look() {
         if (Input.GetMouseButtonDown(0)) {
@@ -81,6 +79,9 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void Move() {
+        // We're just using FixedUpdate for movement...
+    }
 
     // private
 
@@ -88,7 +89,6 @@ public class Player : MonoBehaviour
     bool IsGrounded() {
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity)) {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * hit.distance, Color.yellow);
             if (hit.distance > 5) return false;
         }
         return true;

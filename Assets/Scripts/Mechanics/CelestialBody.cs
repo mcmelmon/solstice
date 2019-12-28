@@ -7,6 +7,7 @@ public class CelestialBody : MonoBehaviour
     public Vector3 incline;
     public float degreesPerSecond = 1f;
     public float gravity = -10f;
+    public Transform core;
 
 
     void Start()
@@ -26,10 +27,14 @@ public class CelestialBody : MonoBehaviour
     
     public void Attract(Transform body)
     {
-        Vector3 toPlanetCore = (body.position - transform.position).normalized;
-        Vector3 toSky = body.up;
+        Vector3 center = core.GetComponent< Renderer>().bounds.center;
 
-        body.rotation = Quaternion.FromToRotation(toSky, toPlanetCore) * body.rotation;
-        body.GetComponent<Rigidbody>().AddForce(toPlanetCore * gravity);
+        Debug.DrawRay(body.transform.position, (center - body.transform.position).normalized * 300f, Color.yellow);
+
+        // Quaternion targetRotation = Quaternion.FromToRotation(body.up, (center - body.transform.position).normalized) * body.rotation;
+        Quaternion targetRotation = Quaternion.FromToRotation(body.up * -1, (center - body.transform.position).normalized) * body.rotation;
+
+        body.rotation = Quaternion.Slerp(body.rotation, targetRotation, 5f * Time.deltaTime);
+        body.GetComponent<Rigidbody>().AddForce((center - body.transform.position).normalized * gravity);
     }
 }
