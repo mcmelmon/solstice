@@ -6,12 +6,10 @@ public class Orbit : MonoBehaviour
 {
     public Transform center;
     public Transform body;
-    public Vector3 inclineVector = Vector3.zero;
     public float degreesPerSecond = 1f;
 
     GameObject plane;
     private void Start() {
-        // transform.Rotate(inclineVector);
     }
 
     void Update()
