@@ -1,9 +1,12 @@
-﻿using System.Collections;
+﻿using Cinemachine;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class Henge : MonoBehaviour
 {
+    public PlayableDirector cutSceneDirector;
     public Switch mechanism;
 
     bool ascending = false;
@@ -24,6 +27,7 @@ public class Henge : MonoBehaviour
     private void Ascend() {
         SacredOrb orb = mechanism.LastTouchedBy.GetComponent<SacredOrb>();
         if (orb != null) {
+            cutSceneDirector.Play();
             orb.AscendToHeaven();
         }
         mechanism.Reset();
