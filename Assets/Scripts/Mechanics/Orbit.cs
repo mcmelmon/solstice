@@ -9,8 +9,9 @@ public class Orbit : MonoBehaviour
     public Vector3 inclineVector = Vector3.zero;
     public float degreesPerSecond = 1f;
 
+    GameObject plane;
     private void Start() {
-        transform.Rotate(inclineVector);
+        // transform.Rotate(inclineVector);
     }
 
     void Update()
@@ -20,6 +21,10 @@ public class Orbit : MonoBehaviour
 
     private void OnDrawGizmos() {
         float radius = Vector3.Distance(center.position, transform.position);
+        // if (plane == null) {
+        //     plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
+        //     plane.transform.parent = this.gameObject.transform;
+        // }
         Debug.DrawRay(body.transform.position, (center.position - body.transform.position) * radius, Color.green);
     }
 }
