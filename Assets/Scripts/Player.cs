@@ -9,13 +9,14 @@ public class Player : MonoBehaviour
     public float speed = 3f;
     public float turnSpeed = 75f;
 
-    public CinemachineFreeLook viewport;
-
     Vector2 movement;
+    List<CinemachineVirtualCamera> cutCameras = new List<CinemachineVirtualCamera>();
 
     // properties
 
     public static Player Instance { get; set; }
+
+    CinemachineFreeLook FreeLook { get; set; }
 
     // Unity
 
@@ -27,10 +28,12 @@ public class Player : MonoBehaviour
             return;
         }
         Instance = this;
+        FreeLook = GameObject.Find("CM FreeLook1 - Player").GetComponent<CinemachineFreeLook>();
     }
 
 
     private void Start() {
+        cutCameras.AddRange(FindObjectsOfType<CinemachineVirtualCamera>());
     }
 
     private void Update() {
@@ -50,6 +53,10 @@ public class Player : MonoBehaviour
 
             forms[0].GetComponent<Rigidbody>().drag = 2f;
             forms[1].GetComponent<MeshCollider>().enabled = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            ResetCameras();
         }
     }
 
@@ -71,11 +78,11 @@ public class Player : MonoBehaviour
 
     public void Look() {
         if (Input.GetMouseButtonDown(0)) {
-            viewport.Priority = 20;
+            FreeLook.Priority = 20;
         }
         
         if (Input.GetMouseButtonUp(0)) {
-            viewport.Priority = 1;
+            FreeLook.Priority = 1;
         }
     }
 
@@ -85,12 +92,18 @@ public class Player : MonoBehaviour
 
     // private
 
-
     bool IsGrounded() {
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity)) {
             if (hit.distance > 5) return false;
         }
         return true;
+    }
+
+
+    void ResetCameras() {
+        foreach (var camera in cutCameras) {
+            camera.m_Priority = 1;
+        }
     }
 }
