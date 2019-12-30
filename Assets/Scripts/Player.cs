@@ -54,18 +54,20 @@ public class Player : MonoBehaviour
             forms[0].GetComponent<Rigidbody>().drag = 2f;
             forms[1].GetComponent<MeshCollider>().enabled = true;
         }
-
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            ResetCameras();
-        }
     }
 
     private void FixedUpdate() {
         float rotation = Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime;
+        float strafe = Input.GetAxis("Strafe") * speed * Time.deltaTime;
         float translation = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-        if (!Mathf.Approximately(translation, 0) || !Mathf.Approximately(rotation, 0)) {
-            transform.Translate(0, 0, translation);
+
+        if (!Mathf.Approximately(translation, 0) || !Mathf.Approximately(strafe, 0) || !Mathf.Approximately(rotation, 0)) {
+            transform.Translate(strafe, 0, translation);
             transform.Rotate(0, rotation, 0);
+        }
+
+        if (!Mathf.Approximately(Input.GetAxis("Jump"), 0)) {
+            Jump();
         }
     }
 
@@ -73,7 +75,7 @@ public class Player : MonoBehaviour
     // public
 
     public void Jump() {
-        GetComponent<Rigidbody>().AddForce(new Vector3(0, speed * 10, 0), ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(new Vector3(0, speed * 2, 0), ForceMode.Impulse);
     }
 
     public void Look() {
@@ -87,7 +89,7 @@ public class Player : MonoBehaviour
     }
 
     public void Move() {
-        // We're just using FixedUpdate for movement...
+        // Here for the fancy new input controller, but currently handling movement in FixedUpdate
     }
 
     // private

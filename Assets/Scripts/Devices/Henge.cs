@@ -7,15 +7,16 @@ using UnityEngine.Playables;
 public class Henge : MonoBehaviour
 {
     public PlayableDirector cutSceneDirector;
-    public Switch mechanism;
 
+    Switch Mechanism { get; set; }
     bool ascending = false;
     private void Awake() {
+        Mechanism = GetComponentInChildren<Switch>();
     }
 
     void Update()
     {
-        if (!ascending && mechanism != null && mechanism.Engaged && mechanism.LastTouchedBy != null) {
+        if (!ascending && Mechanism != null && Mechanism.Engaged && Mechanism.LastTouchedBy != null) {
             ascending = true;
             Ascend();
         }
@@ -25,11 +26,11 @@ public class Henge : MonoBehaviour
     // private
 
     private void Ascend() {
-        SacredOrb orb = mechanism.LastTouchedBy.GetComponent<SacredOrb>();
+        SacredOrb orb = Mechanism.LastTouchedBy.GetComponent<SacredOrb>();
         if (orb != null) {
             cutSceneDirector.Play();
             orb.AscendToHeaven();
         }
-        mechanism.Reset();
+        Mechanism.Reset();
     }
 }
