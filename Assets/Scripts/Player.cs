@@ -98,6 +98,8 @@ public class Player : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity)) {
             if (hit.distance > 5) return false;
+        } else {
+            return false;
         }
         return true;
     }
