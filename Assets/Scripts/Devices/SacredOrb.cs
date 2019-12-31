@@ -42,8 +42,6 @@ public class SacredOrb : MonoBehaviour
 
     public void Respawn() {
         transform.position = RespawnPoint;
-        SacredAlcove myAlcove = FindObjectsOfType<SacredAlcove>().Where(alcove => alcove.Orb == this).First();
-        myAlcove.Mechanism.Reset();
     }
 
     public void UnlockInPlace() {

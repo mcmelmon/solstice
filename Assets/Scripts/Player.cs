@@ -47,6 +47,7 @@ public class Player : MonoBehaviour
 
             forms[0].GetComponent<Rigidbody>().drag = 0.1f;
             forms[1].GetComponent<MeshCollider>().enabled = false;
+            speed = 3f;
         } else {
             foreach (MeshRenderer renderer in forms[0].GetComponentsInChildren<MeshRenderer>()) {
                 renderer.enabled = false;
@@ -55,6 +56,7 @@ public class Player : MonoBehaviour
 
             forms[0].GetComponent<Rigidbody>().drag = 2f;
             forms[1].GetComponent<MeshCollider>().enabled = true;
+            speed = 6f;
         }
     }
 
