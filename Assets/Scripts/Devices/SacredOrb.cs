@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SacredOrb : MonoBehaviour
@@ -8,9 +9,11 @@ public class SacredOrb : MonoBehaviour
     public GameObject celestialCycle;
 
     public Light Lamp { get; set; }
+    Vector3 RespawnPoint { get; set; }
 
     private void Awake() {
         Lamp = GetComponentInChildren<Light>();
+        RespawnPoint = transform.position;
     }
     public void AscendToHeaven() 
     {
@@ -35,6 +38,12 @@ public class SacredOrb : MonoBehaviour
 
     public void LockInPlace() {
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+    }
+
+    public void Respawn() {
+        transform.position = RespawnPoint;
+        SacredAlcove myAlcove = FindObjectsOfType<SacredAlcove>().Where(alcove => alcove.Orb == this).First();
+        myAlcove.Mechanism.Reset();
     }
 
     public void UnlockInPlace() {

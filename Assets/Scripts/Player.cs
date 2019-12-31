@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     public static Player Instance { get; set; }
 
     CinemachineFreeLook FreeLook { get; set; }
+    Vector3 RespawnPoint { get; set; }
 
     // Unity
 
@@ -29,6 +30,7 @@ public class Player : MonoBehaviour
         }
         Instance = this;
         FreeLook = GameObject.Find("CM FreeLook1 - Player").GetComponent<CinemachineFreeLook>();
+        RespawnPoint = transform.position;
     }
 
 
@@ -90,6 +92,10 @@ public class Player : MonoBehaviour
 
     public void Move() {
         // Here for the fancy new input controller, but currently handling movement in FixedUpdate
+    }
+
+    public void Respawn() {
+        transform.position = RespawnPoint;
     }
 
     // private

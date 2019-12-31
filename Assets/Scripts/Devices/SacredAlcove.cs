@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SacredAlcove : MonoBehaviour
 {
-    Switch Mechanism { get; set; }
-    SacredOrb Orb { get; set; }
+    public Switch Mechanism { get; set; }
+    public SacredOrb Orb { get; set; }
 
     private void Awake() {
         Orb = GetComponentInChildren<SacredOrb>();
