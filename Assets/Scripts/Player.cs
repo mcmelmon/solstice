@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     public static Player Instance { get; set; }
 
     CinemachineFreeLook FreeLook { get; set; }
+    float OriginalSpeed { get; set; }
     Vector3 RespawnPoint { get; set; }
 
     // Unity
@@ -30,6 +31,7 @@ public class Player : MonoBehaviour
         }
         Instance = this;
         FreeLook = GameObject.Find("CM FreeLook1 - Player").GetComponent<CinemachineFreeLook>();
+        OriginalSpeed = speed;
         RespawnPoint = transform.position;
     }
 
@@ -47,7 +49,7 @@ public class Player : MonoBehaviour
 
             forms[0].GetComponent<Rigidbody>().drag = 0.1f;
             forms[1].GetComponent<MeshCollider>().enabled = false;
-            speed = 3f;
+            speed = OriginalSpeed;
         } else {
             foreach (MeshRenderer renderer in forms[0].GetComponentsInChildren<MeshRenderer>()) {
                 renderer.enabled = false;
@@ -56,7 +58,7 @@ public class Player : MonoBehaviour
 
             forms[0].GetComponent<Rigidbody>().drag = 2f;
             forms[1].GetComponent<MeshCollider>().enabled = true;
-            speed = 6f;
+            speed = OriginalSpeed * 2f;
         }
     }
 
