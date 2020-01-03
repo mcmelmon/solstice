@@ -4,22 +4,28 @@ using UnityEngine;
 
 public class Button : MonoBehaviour
 {
-    public bool engaged = false;
-    public bool triggered = false;
-    public bool perpetual = false;
-    public bool resettable = false;
-    public int sequencePosition;
-    public GameObject[] interactsWithObjects;
+    [SerializeField] bool engaged = false;
+    [SerializeField] bool triggered = false;
+    [SerializeField] bool perpetual = false;
+    [SerializeField] bool resettable = false;
+    [SerializeField] int sequencePosition;
+    [SerializeField] GameObject[] interactsWithObjects;
 
+    public bool Engaged { get; set; }
     public GameObject LastTouchedBy { get; set; }
+    public bool Triggered { get; set; }
     List<GameObject> InteractsWith { get; set; }
+    Vector3 OriginalScale{ get; set; }
 
     private void Awake() {
-     InteractsWith = new List<GameObject>(interactsWithObjects);
+        Engaged = engaged;
+        InteractsWith = new List<GameObject>(interactsWithObjects);
+        OriginalScale = transform.localScale;
+        Triggered = triggered;
     }
 
     private void Update() {
-        if (engaged) {
+        if (Engaged) {
              transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y / 5, transform.localScale.z);
         }
     }
@@ -27,15 +33,19 @@ public class Button : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (InteractsWith.Contains(other.gameObject)) {
             if (perpetual) {
-                triggered = true;
-            } else if (!triggered) {
-                engaged = resettable ? !engaged : true;
+                Triggered = true;
+            } else if (!Triggered) {
+                Engaged = resettable ? !Engaged : true;
                 triggered = true;   // to track if the button has ever been pressed, separate from current engagement
-            } else if (triggered && resettable) {
-                engaged = false;
-                triggered = false;
+            } else if (Triggered && resettable) {
+                Engaged = false;
+                Triggered = false;
             }
             LastTouchedBy = other.gameObject;
         }
+    }
+
+    public void Reset() {
+        transform.localScale = OriginalScale;
     }
 }

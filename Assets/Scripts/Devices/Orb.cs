@@ -9,7 +9,7 @@ public class Orb : MonoBehaviour
     public GameObject celestialCycle;
 
     public Light Lamp { get; set; }
-    Vector3 RespawnPoint { get; set; }
+    public Vector3 RespawnPoint { get; set; }
 
     private void Awake() {
         Lamp = GetComponentInChildren<Light>();
