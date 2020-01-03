@@ -26,7 +26,7 @@ public class Henge : MonoBehaviour
     // private
 
     private void Ascend() {
-        SacredOrb orb = Mechanism.LastTouchedBy.GetComponent<SacredOrb>();
+        Orb orb = Mechanism.LastTouchedBy.GetComponent<Orb>();
         if (orb != null) {
             cutSceneDirector.Play();
             orb.AscendToHeaven();
