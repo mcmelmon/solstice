@@ -22,7 +22,7 @@ public class Switch : MonoBehaviour
         // TODO: handle sequences
 
         foreach (var button in buttons) {
-            Engaged = button.engaged;
+            Engaged = button.Engaged;
             if (!Engaged) break;
         }
         
@@ -36,8 +36,9 @@ public class Switch : MonoBehaviour
 
     public void Reset() {
         foreach (var button in buttons) {
-            button.engaged = button.triggered = false;
+            button.Engaged = button.Triggered = false;
             button.LastTouchedBy = null;
+            button.Reset();
         }
         LastTouchedBy = null;
     }
@@ -45,7 +46,7 @@ public class Switch : MonoBehaviour
     // private
 
     IEnumerator ResetAfterDelay() {
-        while (true && resettable && resetInSeconds > 0) {
+        while (resettable && resetInSeconds > 0) {
             yield return new WaitForSeconds(resetInSeconds);
             Reset();
         }
