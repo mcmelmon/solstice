@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1860152082587583996}
   - component: {fileID: 4023392945555906254}
   m_Layer: 0
-  m_Name: SacredAlcove
+  m_Name: Shrine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,7 +96,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8005967068212233528}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 2
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
