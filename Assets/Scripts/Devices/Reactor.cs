@@ -9,14 +9,13 @@ public class Reactor : MonoBehaviour
 
     private void Awake() {
         Mechanism = GetComponentInChildren<Switch>();
-        Socket = GetComponent<Socket>();
+        Socket = GetComponentInChildren<Socket>();
     }
 
     void Update()
     {
         if (Socket != null && Socket.Orb != null && Mechanism != null && Mechanism.Engaged) {
-            Socket.Orb.Illuminate();
-            Socket.Orb.UnlockInPlace();
+            Socket.Deactivated = true;
         }
     }
 

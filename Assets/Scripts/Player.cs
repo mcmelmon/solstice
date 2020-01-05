@@ -98,6 +98,13 @@ public class Player : MonoBehaviour
         // Here for the fancy new input controller, but currently handling movement in FixedUpdate
     }
 
+    public void Push() {
+        var propulsions = GetComponentsInChildren<Telekinesis>();
+        foreach (var propulsion in propulsions) {
+            propulsion.PushIt();
+        }
+    }
+
     public void Respawn() {
         transform.position = RespawnPoint;
     }

@@ -263,6 +263,17 @@ public class @Solstice : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""29d24d85-48af-4b47-83ac-08c1eb3b1593"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""05f6913d-c316-48b2-a6bb-e225f14c7960"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
