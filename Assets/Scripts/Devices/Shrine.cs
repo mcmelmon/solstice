@@ -20,6 +20,7 @@ public class Shrine : MonoBehaviour
     {
         if (Orb != null && Mechanism != null && Mechanism.Engaged) {
             Orb.GetComponent<Rigidbody>().useGravity = true;
+            Orb.UnlockInPlace();
             Orb = null;
         }
     }    

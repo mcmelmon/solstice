@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public GameObject[] forms;
-    public float speed = 3f;
-    public float turnSpeed = 75f;
+    [SerializeField] GameObject[] forms;
+    [SerializeField] float speed = 3f;
+    [SerializeField] float turnSpeed = 75f;
 
     Vector2 movement;
     List<CinemachineVirtualCamera> cutCameras = new List<CinemachineVirtualCamera>();
@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
             }
             forms[1].GetComponent<MeshRenderer>().enabled = false;
 
-            forms[0].GetComponent<Rigidbody>().drag = 0.1f;
+            forms[0].GetComponent<Rigidbody>().drag = 0f;
             forms[1].GetComponent<MeshCollider>().enabled = false;
             speed = OriginalSpeed;
         } else {
