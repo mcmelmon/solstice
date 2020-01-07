@@ -13,7 +13,6 @@ class Wisp : MonoBehaviour
     public Color candle_color = Color.white;
     public float candle_intensity = 1f;
     public float candle_range = 10f;
-    List<Vector3> milestones = new List<Vector3>();
     List<Breadcrumb> path = new List<Breadcrumb>();
     bool looping_path = false;
     Breadcrumb current_objective;
@@ -54,15 +53,10 @@ class Wisp : MonoBehaviour
 
             Circle haunting_circle = Circle.New(haunt.position, haunt_radius);
 
-            for (int i = haunting_circle.VertexCount - 1; i <=0; i--) {
-                path.Add(CreateBreadcrumb(haunting_circle.Vertices[i]));
-            }
-
             foreach (var point in haunting_circle.Vertices) {
                 path.Add(CreateBreadcrumb(point));
             }
             looping_path = true;
-            transform.position = path[0].position;
             current_objective = path[0];
         }
     }
@@ -95,8 +89,6 @@ class Wisp : MonoBehaviour
 
     public void Move()
     {
-        // float terrain_height = Geography.Terrain != null ? Geography.Terrain.SampleHeight(current_objective.position) : current_objective.position.y;
-
         Vector3 forward_motion = transform.TransformDirection(Vector3.forward);
         forward_motion.y = 0;
 
@@ -110,7 +102,6 @@ class Wisp : MonoBehaviour
 
         Vector3 new_position = (forward_motion) * 3f * Time.deltaTime;
         transform.position += new_position;
-        // transform.position = new Vector3(transform.position.x, terrain_height, transform.position.z);
         transform.position = FindSurface(transform.position);
         current_objective.remaining_distance = Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(current_objective.position.x, 0, current_objective.position.z));
     }
