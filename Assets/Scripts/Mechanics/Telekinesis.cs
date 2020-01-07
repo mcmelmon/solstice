@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Telekinesis : MonoBehaviour
 {
-    [SerializeField] float initialForce = .3f;
-
     public Orb Orb { get; set; }
 
     private void Awake() {
@@ -25,19 +23,10 @@ public class Telekinesis : MonoBehaviour
 
     private void OnTriggerStay(Collider other) {
         if (other.gameObject.GetComponent<Orb>() != null) {
-            Vector3 pull = (transform.position - other.transform.position).normalized;
             Vector3 push = (other.transform.position - transform.position).normalized;
-            Vector3 left = Vector3.Cross(pull, Vector3.up).normalized;
-            float distance = Vector3.Distance(other.transform.position, transform.position);
+            Vector3 left = Vector3.Cross(push, Vector3.up).normalized;
 
-            // Fiddle with the force and size of the player's sphere collider trigger to tune the
-            // telekinesis effect
-
-            if (distance > 3f) {
-                other.gameObject.GetComponent<Rigidbody>().AddForce((left + pull) * initialForce, ForceMode.Impulse);
-            } else {
-                other.gameObject.GetComponent<Rigidbody>().AddForce(push * initialForce, ForceMode.Impulse);
-            }
+            other.gameObject.GetComponent<Rigidbody>().AddForce((push + left) * 0.5f, ForceMode.Impulse);
         }   
     }
 
@@ -46,7 +35,7 @@ public class Telekinesis : MonoBehaviour
     public void PushIt() {
         if (Orb != null) {
             Vector3 push = (Orb.transform.position - transform.position).normalized;
-            Orb.GetComponent<Rigidbody>().AddForce(push * initialForce * 20f, ForceMode.Impulse);
+            Orb.GetComponent<Rigidbody>().AddForce(push * 0.5f * 20f, ForceMode.Impulse);
         }
 
     }

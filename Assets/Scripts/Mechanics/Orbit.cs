@@ -7,6 +7,7 @@ public class Orbit : MonoBehaviour
     public Transform center;
     public Transform body;
     public float degreesPerSecond = 1f;
+    public Light lamp;
 
     GameObject plane;
     private void Start() {
@@ -15,6 +16,7 @@ public class Orbit : MonoBehaviour
     void Update()
     {
         transform.Rotate (0, degreesPerSecond * Time.deltaTime, 0);
+        if (lamp != null) lamp.transform.LookAt(center.position);
     }
 
     private void OnDrawGizmos() {

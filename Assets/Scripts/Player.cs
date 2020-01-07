@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     // properties
 
     public static Player Instance { get; set; }
+    public float Speed { get; set; }
 
     CinemachineFreeLook FreeLook { get; set; }
     float OriginalSpeed { get; set; }
@@ -41,6 +42,7 @@ public class Player : MonoBehaviour
     }
 
     private void Update() {
+        Speed = speed;
         if (IsGrounded()) {
             foreach (MeshRenderer renderer in forms[0].GetComponentsInChildren<MeshRenderer>()) {
                 renderer.enabled = true;
