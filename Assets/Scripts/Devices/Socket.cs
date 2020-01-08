@@ -4,43 +4,46 @@ using UnityEngine;
 
 public class Socket : MonoBehaviour
 {
-    public bool Deactivated { get; set; }
+    [SerializeField] Transform point;
+    public bool Charged { get; set; }
     public Orb Orb { get; set; }
-    public Reactor Reactor { get; set; }
 
     private void Awake() {
-        Reactor = GetComponentInParent<Reactor>();
-        Deactivated = false;
+        Charged = false;
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (Orb == null && other.GetComponent<Orb>() != null && !Deactivated) {
+        if (Orb == null && other.GetComponent<Orb>() != null && !Charged) {
             Orb = other.GetComponent<Orb>();
-            Reactor.ShowButton();
-            StartCoroutine(FloatOrb());
+            StartCoroutine(Charge());
         }
     }
 
     private void OnTriggerExit(Collider other) {
         if (other.GetComponent<Orb>() != null) {
-            StopCoroutine(FloatOrb());
+            StopCoroutine(Charge());
             Orb = null;
-            Reactor.HideButton();
-            Reactor.Mechanism.Reset();
         }
     }
 
     // private
 
-    IEnumerator FloatOrb() {
-        while (true && Orb != null) {
-            if (!Deactivated) {
-                Vector3 center = transform.position + Vector3.up * 10f;
-                Vector3 pull = (center - Orb.transform.position).normalized;
-                float distance = Vector3.Distance(Orb.transform.position, center);
-                Orb.gameObject.GetComponent<Rigidbody>().AddForce(pull * 70f, ForceMode.Impulse);
+    IEnumerator Charge() {
+        int charge = 0;
+        System.DateTime startTime = System.DateTime.Now;
+
+        while (Orb != null && ((System.DateTime.Now - startTime).TotalSeconds < 10f)) {
+            Orb.LockInPlace();
+            float step =  3f * Time.deltaTime; // calculate distance to move
+            Orb.transform.position = Vector3.MoveTowards(Orb.transform.position, point.position, step);
+
+            if (Vector3.Distance(Orb.transform.position, point.position) < 0.001f) {
+                charge++;
             }
-            yield return new WaitForSeconds(1f);
+
+            yield return null;
         }
+        Charged = true;
+        Orb.UnlockInPlace();
     }
 }

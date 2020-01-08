@@ -22,7 +22,7 @@ public class Telekinesis : MonoBehaviour
     }
 
     private void OnTriggerStay(Collider other) {
-        if (other.gameObject.GetComponent<Orb>() != null) {
+        if (other.gameObject.GetComponent<Orb>() != null && !other.gameObject.GetComponent<Orb>().Locked ) {
             Vector3 push = (other.transform.position - transform.position).normalized;
             Vector3 left = Vector3.Cross(push, Vector3.up).normalized;
 
@@ -33,7 +33,7 @@ public class Telekinesis : MonoBehaviour
     // public
 
     public void PushIt() {
-        if (Orb != null) {
+        if (Orb != null && !Orb.Locked) {
             Vector3 push = (Orb.transform.position - transform.position).normalized;
             Orb.GetComponent<Rigidbody>().AddForce(push * 0.5f * 20f, ForceMode.Impulse);
         }
