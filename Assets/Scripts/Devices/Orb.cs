@@ -80,7 +80,7 @@ public class Orb : MonoBehaviour
         while (true) {
             yield return new WaitForSeconds(2);  // Orb falls for 2 seconds so we can notice it
             if (!Locked) {
-                RisingForce = Random.Range(0.8f, 1.16f);
+                RisingForce = Random.Range(1.2f, 1.3f);
             }
 
         }

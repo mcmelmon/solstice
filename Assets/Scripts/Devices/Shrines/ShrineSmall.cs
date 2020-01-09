@@ -8,21 +8,19 @@ public class ShrineSmall : MonoBehaviour
     public Socket Socket { get; set; }
 
     bool Transmorgified { get; set; }
+
+    Transmorgifier Transmorgifier { get; set; }
     void Awake()
     {
         Socket = GetComponentInChildren<Socket>();
         Transmorgified = false;
+        Transmorgifier = GetComponentInChildren<Transmorgifier>();
     }
 
-    private void Start() {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if (Socket != null && !Transmorgified && Socket.Charged) {
-            GetComponentInChildren<PlayableDirector>().Play();
+        if (Socket != null && !Transmorgified && Socket.Charged ) {
+            Transmorgifier.Transmorgify();
             Transmorgified = true;
         }
     }
