@@ -26,7 +26,7 @@ public class Telekinesis : MonoBehaviour
             Vector3 push = (other.transform.position - transform.position).normalized;
             Vector3 left = Vector3.Cross(push, Vector3.up).normalized;
 
-            other.gameObject.GetComponent<Rigidbody>().AddForce((push + left) * 0.5f, ForceMode.Impulse);
+            other.gameObject.GetComponent<Rigidbody>().AddForce((push + left) * 0.3f, ForceMode.Impulse);
         }   
     }
 
@@ -35,7 +35,7 @@ public class Telekinesis : MonoBehaviour
     public void PushIt() {
         if (Orb != null && !Orb.Locked) {
             Vector3 push = (Orb.transform.position - transform.position).normalized;
-            Orb.GetComponent<Rigidbody>().AddForce(push * 0.5f * 20f, ForceMode.Impulse);
+            Orb.GetComponent<Rigidbody>().AddForce(push * 5f, ForceMode.Impulse);
         }
 
     }
