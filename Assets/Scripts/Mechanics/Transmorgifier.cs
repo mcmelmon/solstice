@@ -28,7 +28,6 @@ public class Transmorgifier : MonoBehaviour
     // public
 
     public void Transmorgify() {
-        Debug.Log("Transmorg");
         if (Phases != null && Phases.Count > 0) StartCoroutine(AnimateTransmorgifySequence());
     }
 
@@ -38,8 +37,6 @@ public class Transmorgifier : MonoBehaviour
         int currentPhase = 0;
         while (currentPhase < Phases.Count) {
             foreach (GameObject element in transmorgifications.Where(t => t.phase == currentPhase).Select(t => t.element).ToList()) {
-                Debug.Log("Element: " + element);
-                Debug.Log("Phase: " + currentPhase);
                 PlayableDirector director = element.GetComponent<PlayableDirector>();
                 if (director != null) director.Play();
             }

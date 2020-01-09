@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Orb
   - Water
+  - Cloud
   layers:
   - Default
   - TransparentFX

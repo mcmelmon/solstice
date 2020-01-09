@@ -14,21 +14,17 @@ public class Orb : MonoBehaviour
     public bool Locked { get; set; }
     public Vector3 RespawnPoint { get; set; }
 
-    float RisingForce { get; set; }
-
 
     private void Awake() {
         Lamp = GetComponentInChildren<Light>();
         RespawnPoint = transform.position;
         if (startLocked) LockInPlace();
-        RisingForce = 0f;
-        StartCoroutine(RiseAndFall());
     }
 
     private void Update() {
         if (!Locked) {
             Vector3 push = (Player.Instance.transform.position - transform.position).normalized;
-            GetComponent<Rigidbody>().AddForce((push * 0.4f) + (Vector3.up * RisingForce), ForceMode.Impulse);
+            GetComponent<Rigidbody>().AddForce(push * 0.4f, ForceMode.Impulse);
         }
     }
 
@@ -73,16 +69,6 @@ public class Orb : MonoBehaviour
             yield return new WaitForSeconds(secondsBeforeRise);
             celestialCycle.SetActive(true);
             Destroy(this.gameObject);
-        }
-    }
-
-    IEnumerator RiseAndFall() {
-        while (true) {
-            yield return new WaitForSeconds(2);  // Orb falls for 2 seconds so we can notice it
-            if (!Locked) {
-                RisingForce = Random.Range(1.2f, 1.3f);
-            }
-
         }
     }
 }

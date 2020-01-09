@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     public static Player Instance { get; set; }
     public float Speed { get; set; }
 
+    System.DateTime LastTransformTime { get; set; }
+
     CinemachineFreeLook FreeLook { get; set; }
     float OriginalSpeed { get; set; }
     Vector3 RespawnPoint { get; set; }
@@ -32,6 +34,7 @@ public class Player : MonoBehaviour
         }
         Instance = this;
         FreeLook = GameObject.Find("CM FreeLook1 - Player").GetComponent<CinemachineFreeLook>();
+        LastTransformTime = System.DateTime.MinValue;
         OriginalSpeed = speed;
         RespawnPoint = transform.position;
     }
@@ -42,8 +45,8 @@ public class Player : MonoBehaviour
     }
 
     private void Update() {
-        Speed = speed;
-        if (IsGrounded()) {
+        if (RecentlyTransformed()) {
+        } else if (IsGrounded()) {
             foreach (MeshRenderer renderer in forms[0].GetComponentsInChildren<MeshRenderer>()) {
                 renderer.enabled = true;
             }
@@ -61,7 +64,10 @@ public class Player : MonoBehaviour
             forms[0].GetComponent<Rigidbody>().drag = 2f;
             forms[1].GetComponent<MeshCollider>().enabled = true;
             speed = OriginalSpeed * 2f;
+            LastTransformTime = System.DateTime.Now;
         }
+
+        Speed = speed;
     }
 
     private void FixedUpdate() {
@@ -116,13 +122,16 @@ public class Player : MonoBehaviour
     bool IsGrounded() {
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity)) {
-            if (hit.distance > 5) return false;
+            if (hit.distance > 5 || hit.transform.gameObject.tag == "Cloud") return false;
         } else {
             return false;
         }
         return true;
     }
 
+    bool RecentlyTransformed() {
+        return (System.DateTime.Now - LastTransformTime).TotalSeconds < 5;
+    }
 
     void ResetCameras() {
         foreach (var camera in cutCameras) {

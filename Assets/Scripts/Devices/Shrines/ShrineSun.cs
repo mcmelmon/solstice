@@ -19,7 +19,6 @@ public class ShrineSun : MonoBehaviour
     void Update()
     {
         if (Orb != null && Mechanism != null && Mechanism.Engaged) {
-            Orb.GetComponent<Rigidbody>().useGravity = true;
             Orb.UnlockInPlace();
             Orb = null;
         }
