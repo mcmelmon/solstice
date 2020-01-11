@@ -5,23 +5,43 @@ using UnityEngine.Playables;
 
 public class ShrineSmall : MonoBehaviour
 {
+    [SerializeField] List<ShrineSmall> prerequisites = new List<ShrineSmall>();
     public Socket Socket { get; set; }
 
-    bool Transmorgified { get; set; }
-
-    Transmorgifier Transmorgifier { get; set; }
+    public Transmorgifier Transmorgifier { get; set; }
+    bool PrerequisitesMet { get; set; }
     void Awake()
     {
         Socket = GetComponentInChildren<Socket>();
-        Transmorgified = false;
+        if (prerequisites.Count > 0) {
+            Socket.gameObject.SetActive(false);
+            PrerequisitesMet = false;
+            StartCoroutine(CheckPrerequisites());
+        } else {
+            Socket.gameObject.SetActive(true);
+            PrerequisitesMet = true;
+        }
         Transmorgifier = GetComponentInChildren<Transmorgifier>();
     }
 
-    void Update()
-    {
-        if (Socket != null && !Transmorgified && Socket.Charged ) {
-            Transmorgifier.Transmorgify();
-            Transmorgified = true;
+    // public
+
+    public void Transforgify() {
+        if (Transmorgifier != null) Transmorgifier.Transmorgify();
+    }
+
+    // private
+
+    IEnumerator CheckPrerequisites() {
+        while (!PrerequisitesMet) {
+            foreach (var preq in prerequisites) {
+                if (preq.Socket != null) { // a shrine's socket might not get set before another shrine's awake runs
+                    PrerequisitesMet = preq.Socket.Charged;
+                    if (!PrerequisitesMet) continue;
+                }
+            }
+            yield return new WaitForSeconds(1);
         }
+        Socket.gameObject.SetActive(true);
     }
 }
