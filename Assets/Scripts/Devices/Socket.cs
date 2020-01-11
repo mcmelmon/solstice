@@ -8,8 +8,11 @@ public class Socket : MonoBehaviour
     public bool Charged { get; set; }
     public Orb Orb { get; set; }
 
+    ShrineSmall Shrine { get; set; }
+
     private void Awake() {
         Charged = false;
+        Shrine = GetComponentInParent<ShrineSmall>();
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -32,7 +35,7 @@ public class Socket : MonoBehaviour
         int charge = 0;
         System.DateTime startTime = System.DateTime.Now;
 
-        while (Orb != null && ((System.DateTime.Now - startTime).TotalSeconds < 10f)) {
+        while (!Charged && Orb != null && ((System.DateTime.Now - startTime).TotalSeconds < 10f)) {
             Orb.LockInPlace();
             float step =  3f * Time.deltaTime; // calculate distance to move
             Orb.transform.position = Vector3.MoveTowards(Orb.transform.position, point.position, step);
@@ -45,5 +48,6 @@ public class Socket : MonoBehaviour
         }
         Charged = true;
         Orb.UnlockInPlace();
+        Shrine.Transforgify();
     }
 }
