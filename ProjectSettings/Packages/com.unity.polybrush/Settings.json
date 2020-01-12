@@ -116,12 +116,12 @@
             {
                 "type": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "ScatteringEditor.PreviewThumSize",
-                "value": "{\"m_Value\":64}"
+                "value": "{\"m_Value\":60}"
             },
             {
                 "type": "UnityEditor.Polybrush.PrefabLoadout, Unity.Polybrush.Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "ScatteringEditor.userLoadout",
-                "value": "{\"m_Value\":{\"infos\":[]}}"
+                "value": "{\"m_Value\":{\"infos\":[{\"palette\":{\"fileID\":11400000,\"guid\":\"33bbee128aced4af6b1673050989b3d8\",\"type\":2},\"prefab\":{\"fileID\":1606697465469725743,\"guid\":\"318806d15464e408d89cfc37eb6f6092\",\"type\":3}},{\"palette\":{\"fileID\":11400000,\"guid\":\"33bbee128aced4af6b1673050989b3d8\",\"type\":2},\"prefab\":{\"fileID\":1934689912163787124,\"guid\":\"d37fb72a337c04461885219bce583dcb\",\"type\":3}}]}}"
             }
         ]
     }
