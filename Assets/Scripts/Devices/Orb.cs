@@ -24,7 +24,7 @@ public class Orb : MonoBehaviour
     private void Update() {
         if (!Locked) {
             Vector3 push = (Player.Instance.transform.position - transform.position).normalized;
-            GetComponent<Rigidbody>().AddForce(push * 0.4f, ForceMode.Impulse);
+            GetComponent<Rigidbody>().AddForce(push * 0.5f, ForceMode.Impulse);
         }
     }
 
