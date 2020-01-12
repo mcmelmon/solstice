@@ -8,6 +8,8 @@ public class Transmorgifier : MonoBehaviour
 {   
     [SerializeField] List<Transmorgification> transmorgifications;
     [SerializeField] float delay = 1f;
+    [SerializeField] PlayableDirector cutSceneDirector;
+
 
     [System.Serializable]
     struct Transmorgification {
@@ -29,6 +31,7 @@ public class Transmorgifier : MonoBehaviour
 
     public void Transmorgify() {
         if (Phases != null && Phases.Count > 0) StartCoroutine(AnimateTransmorgifySequence());
+        cutSceneDirector.Play();
     }
 
     // private
